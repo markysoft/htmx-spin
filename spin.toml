@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+name = "htmx-app"
+version = "0.1.0"
+authors = ["markysoft <markharrop@yahoo.com>"]
+description = "learing htmx"
+
+[[trigger.http]]
+route = "/bank-holidays"
+component = "bank-holidays"
+
+[component.bank-holidays]
+source = "bank-holidays/target/bank-holidays.wasm"
+allowed_outbound_hosts = ["https://www.gov.uk"]
+
+[component.bank-holidays.build]
+command = "npm run build"
+workdir = "bank-holidays"
