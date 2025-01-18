@@ -6,6 +6,11 @@ export const BankHolidaySchema = z.object({
     date: z.string().transform(dashDateStringToDate),
     notes: z.string(),
     bunting: z.boolean()
+}).transform((val) => {
+    return {
+        ...val,
+        substituteDay: val.notes === "Substitute day"
+    }
 })
 
 export type BankHoliday = z.infer<typeof BankHolidaySchema>

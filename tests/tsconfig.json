@@ -9,8 +9,8 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true, // Added sourceMap option
-        "rootDir": "./src"
+        "rootDir": "./"
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
+    "include": ["../bank-holidays/src/**/*.ts"],
+    "exclude": ["node_modules", "../bank-holidays/src/index.ts", "../bank-holidays/src/spin.ts"]
 }
