@@ -14,6 +14,7 @@ describe('Bank Holiday Schema', () =>{
         // because months are 0-indexed...
         expect(bankHoliday.date.getMonth()).toEqual(11)
         expect(bankHoliday.date.getDate()).toEqual(28)
+        expect(bankHoliday.dateString).toEqual('Wednesday 28 December 2022')
         expect(bankHoliday.notes).toEqual('Substitute day')
         expect(bankHoliday.bunting).toEqual(true)
         expect(bankHoliday.substituteDay).toEqual(true)

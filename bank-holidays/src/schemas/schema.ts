@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { dashDateStringToDate } from '../lib/dateUtils'
+import { dashDateStringToDate, toFriendlyDate } from '../lib/dateUtils'
 
 export const BankHolidaySchema = z.object({
     title: z.string(),
@@ -9,7 +9,8 @@ export const BankHolidaySchema = z.object({
 }).transform((val) => {
     return {
         ...val,
-        substituteDay: val.notes === "Substitute day"
+        substituteDay: val.notes === "Substitute day",
+        dateString: toFriendlyDate(val.date)
     }
 })
 
