@@ -1,9 +1,18 @@
 export const holidayTemplate = `
 <div class="content">
-    <ul>
+    <h2 class="title has-text-primary-15">Bank Holidays</h2>
+
     {{@each(it.holidays) => holiday, index}}
-        <li>{{holiday.title}} is on {{holiday.dateString}}</li>
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">{{holiday.title}}</p>
+            </header>
+            <div class="card-content">
+                <div class="content has-text-centered">
+                    {{holiday.dateString}}
+                </div>
+            </div>
+        </div>
     {{/each}}
-    </ul>
 </div>
 `

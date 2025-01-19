@@ -18,9 +18,16 @@
                 HTMX Spin
             </h1>
             <p class="subtitle">
-                My first website with <strong>Bulma</strong>!
+                Typescript backend running on
+                <strong><a href="https://developer.fermyon.com/spin/v3/index">Spin</a></strong>
+                with an <strong><a href="https://htmx.org/">HTMX</a></strong> frontend
+                using <strong><a href="https://bulma.io/">Bulma</a></strong> CSS
             </p>
-            <div hx-get="/bank-holidays" hx-trigger="load"></div>
+            <div class="columns">
+                <div class="column is-one-third is-offset-4">
+                    <div hx-get="/bank-holidays" hx-trigger="load"></div>
+                </div>
+            </div>
         </div>
     </section>
 </body>
