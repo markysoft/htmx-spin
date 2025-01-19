@@ -8,12 +8,15 @@ import { holidayTemplate } from "./templates/holiday-list"
 
 const router = Router()
 
+
 router.get(
-    "/bank-holidays",
-    (_, req: Request, res: ResponseBuilder) => { handleGetBankHolidays(req, res) })
+    "/api/bank-holidays",
+    async (_, req: Request, res: ResponseBuilder) => { await handleGetBankHolidays(req, res) })
+
+router.all("*", (_, req, res) => { handleDefaultRoute(req, res) })
 
 async function handleGetBankHolidays(req: Request, res: ResponseBuilder) {
-
+    console.log("bank hols received")
     try {
         const holidays = await getBankHolidays()
         if (req.headers.get("Content-Type") === "application/json") {
@@ -21,15 +24,25 @@ async function handleGetBankHolidays(req: Request, res: ResponseBuilder) {
             res.send(JSON.stringify(holidays))
         } else {
             res.set("Content-Type", "text/plain")
-            res.send(Sqrl.render(holidayTemplate, { holidays }));
+            res.send(Sqrl.render(holidayTemplate, { holidays }))
         }
     }
     catch (error: unknown) {
         handleError(res, error)
     }
 }
-
+async function handleDefaultRoute(_req: Request, res: ResponseBuilder) {
+    res.set({ "content-type": "text/plain" })
+    res.send("no such route, try another")
+}
 
 export async function handler(req: Request, res: ResponseBuilder) {
-    await router.handleRequest(req, res)
+    try {
+        await router.handleRequest(req, res)
+    }
+    catch (error: unknown) {
+        console.log(error)
+        handleError(res, error)
+    }
+
 }

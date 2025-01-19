@@ -8,7 +8,6 @@ export default tseslint.config(
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
-    files: ["./src/**/*.ts"],
     rules: {
       'semi': ['error', 'never']
     }

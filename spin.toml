@@ -7,7 +7,7 @@ authors = ["markysoft <markharrop@yahoo.com>"]
 description = "learing htmx"
 
 [[trigger.http]]
-route = "/api"
+route = "/api/..."
 component = "hateoas-api"
 
 [component.hateoas-api]
