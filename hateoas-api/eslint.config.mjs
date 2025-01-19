@@ -9,7 +9,8 @@ export default tseslint.config(
   tseslint.configs.stylistic,
   {
     rules: {
-      'semi': ['error', 'never']
+      'semi': ['error', 'never'],
+      'quotes': ['error', 'single']
     }
   }
 )

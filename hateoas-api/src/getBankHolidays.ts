@@ -4,7 +4,7 @@ import { BankHoliday, BankHolidaySchema } from './schemas/schema'
 
 export async function getBankHolidays() {
 
-    const holidaysResponse = await fetch("https://www.gov.uk/bank-holidays.json")
+    const holidaysResponse = await fetch('https://www.gov.uk/bank-holidays.json')
     if (!holidaysResponse.ok) {
         throw new Error(`Failed to fetch bank holidays: ${holidaysResponse.statusText}`)
     }

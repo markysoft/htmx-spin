@@ -5,8 +5,8 @@
 // the fetchEvent. If you prefer to directly target the fetchEvent, you can
 // modify this file
 
-import { ResponseBuilder } from "@fermyon/spin-sdk"
-import { handler } from "."
+import { ResponseBuilder } from '@fermyon/spin-sdk'
+import { handler } from '.'
 
 //@ts-ignore
 addEventListener('fetch', (event: FetchEvent) => {
