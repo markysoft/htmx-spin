@@ -13,6 +13,7 @@
         "allowJs": true,
         "strict": true,
         "noImplicitReturns": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
     }
 }
