@@ -9,7 +9,7 @@ describe('getTides', () => {
         console.log(tideRecord)
         expect(tideRecord).toBeDefined()
         expect(tideRecord.date).toBeDefined()
-        expect(tideRecord.date).toEqual(new Date('Sun, 19 Jan 2025 00:00:00 GMT'))
+        expect(tideRecord.date).toEqual("Sunday 19 January 2025")
         expect(tideRecord.tides).toBeDefined()
         expect(tideRecord.tides.length).toEqual(4)
         expect(tideRecord.tides[0].height).toEqual(1.35)

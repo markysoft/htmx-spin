@@ -5,6 +5,7 @@ import { handleError } from './lib/handleError'
 import { getBankHolidays } from './getBankHolidays'
 import { holidayTemplate } from './templates/holiday-list'
 import { getTides } from './lib/getTides'
+import { tideTemplate } from './templates/tides'
 
 
 const router = Router()
@@ -23,35 +24,25 @@ router.all('*', (_, req, res) => { handleDefaultRoute(req, res) })
 
 async function handleGetBankHolidays(req: Request, res: ResponseBuilder) {
     console.log('getting bank holidays')
-    try {
-        const holidays = await getBankHolidays()
-        if (req.headers.get('Content-Type') === 'application/json') {
-            res.set('Content-Type', 'application/json')
-            res.send(JSON.stringify(holidays))
-        } else {
-            res.set('Content-Type', 'text/plain')
-            res.send(Sqrl.render(holidayTemplate, { holidays }))
-        }
-    }
-    catch (error: unknown) {
-        handleError(res, error)
+    const holidays = await getBankHolidays()
+    if (isJsonRequest(req)) {
+        res.set('Content-Type', 'application/json')
+        res.send(JSON.stringify(holidays))
+    } else {
+        res.set('Content-Type', 'text/plain')
+        res.send(Sqrl.render(holidayTemplate, { holidays }))
     }
 }
 
 async function handleGetTides(req: Request, res: ResponseBuilder) {
     console.log('getting tides')
-    try {
-        const tides = await getTides()
-        if (req.headers.get('Content-Type') === 'application/json') {
-            res.set('Content-Type', 'application/json')
-            res.send(JSON.stringify(tides))
-        } else {
-            res.set({ 'content-type': 'text/plain' })
-            res.send(JSON.stringify(tides))
-        }
-    }
-    catch (error: unknown) {
-        handleError(res, error)
+    const tideRecord = await getTides()
+    if (isJsonRequest(req)) {
+        res.set('Content-Type', 'application/json')
+        res.send(JSON.stringify(tideRecord))
+    } else {
+        res.set({ 'content-type': 'text/plain' })
+        res.send(Sqrl.render(tideTemplate, { tideRecord }))
     }
 }
 
@@ -69,4 +60,8 @@ export async function handler(req: Request, res: ResponseBuilder) {
         handleError(res, error)
     }
 
+}
+
+function isJsonRequest(req: Request) {
+    return req.headers.get('Content-Type') === 'application/json'
 }

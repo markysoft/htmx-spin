@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HTMX Spin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./site.css">
     <script src="https://unpkg.com/htmx.org@2.0.4"
         integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
         crossorigin="anonymous"></script>
@@ -24,7 +25,10 @@
                 using <strong><a href="https://bulma.io/">Bulma</a></strong> CSS
             </p>
             <div class="columns">
-                <div class="column is-one-third is-offset-4">
+                <div class="column is-half">
+                    <div hx-get="/api/tides" hx-trigger="load"></div>
+                </div>
+                <div class="column is-half">
                     <div hx-get="/api/bank-holidays" hx-trigger="load"></div>
                 </div>
             </div>

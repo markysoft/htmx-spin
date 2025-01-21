@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { toFriendlyDate } from '../lib/dateUtils'
 
 export const TideSchema = z.object({
     time: z.string(),
@@ -7,7 +8,7 @@ export const TideSchema = z.object({
 })
 
 export const TideRecordSchema = z.object({
-    date: z.date(),
+    date: z.date().transform(toFriendlyDate),
     tides: z.array(TideSchema).optional().default([]),
 })
 
