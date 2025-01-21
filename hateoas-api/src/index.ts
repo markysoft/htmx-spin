@@ -4,6 +4,7 @@ import * as Sqrl from 'squirrelly'
 import { handleError } from './lib/handleError'
 import { getBankHolidays } from './getBankHolidays'
 import { holidayTemplate } from './templates/holiday-list'
+import { getTides } from './lib/getTides'
 
 
 const router = Router()
@@ -13,10 +14,15 @@ router.get(
     '/api/bank-holidays',
     async (_, req: Request, res: ResponseBuilder) => { await handleGetBankHolidays(req, res) })
 
+
+router.get(
+    '/api/tides',
+    async (_, req: Request, res: ResponseBuilder) => { await handleGetTides(req, res) })
+
 router.all('*', (_, req, res) => { handleDefaultRoute(req, res) })
 
 async function handleGetBankHolidays(req: Request, res: ResponseBuilder) {
-    console.log('bank hols received')
+    console.log('getting bank holidays')
     try {
         const holidays = await getBankHolidays()
         if (req.headers.get('Content-Type') === 'application/json') {
@@ -31,7 +37,25 @@ async function handleGetBankHolidays(req: Request, res: ResponseBuilder) {
         handleError(res, error)
     }
 }
-async function handleDefaultRoute(_req: Request, res: ResponseBuilder) {
+
+async function handleGetTides(req: Request, res: ResponseBuilder) {
+    console.log('getting tides')
+    try {
+        const tides = await getTides()
+        if (req.headers.get('Content-Type') === 'application/json') {
+            res.set('Content-Type', 'application/json')
+            res.send(JSON.stringify(tides))
+        } else {
+            res.set({ 'content-type': 'text/plain' })
+            res.send(JSON.stringify(tides))
+        }
+    }
+    catch (error: unknown) {
+        handleError(res, error)
+    }
+}
+
+async function handleDefaultRoute(req: Request, res: ResponseBuilder) {
     res.set({ 'content-type': 'text/plain' })
     res.send('no such route, try another')
 }

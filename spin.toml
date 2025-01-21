@@ -12,7 +12,8 @@ component = "hateoas-api"
 
 [component.hateoas-api]
 source = "hateoas-api/target/hateoas-api.wasm"
-allowed_outbound_hosts = ["https://www.gov.uk"]
+allowed_outbound_hosts = ["https://www.gov.uk", "https://www.tidetimes.org.uk"]
+files = [{ source = "hateoas-api/src/templates", destination = "hateoas-api/src/templates" }]
 
 [component.hateoas-api.build]
 command = "npm run build"

@@ -1,13 +1,12 @@
 
-import { BankHoliday, BankHolidaySchema } from '../../bank-holidays/src/schemas/schema';
-import { describe, test, expect } from "@jest/globals"
+import { BankHoliday, BankHolidaySchema } from '../../hateoas-api/src/schemas/BankHoliday';
 
-describe('Bank Holiday Schema', () =>{
-    test('Schema is defined', () =>{
+describe('Bank Holiday Schema', () => {
+    test('Schema is defined', () => {
         expect(BankHolidaySchema).toBeDefined()
     })
-    test('Schema parses valid object', () =>{
-        const bankHoliday : BankHoliday = BankHolidaySchema.parse({ title: 'Boxing Day', date: '2022-12-28', notes: 'Substitute day', bunting: true })
+    test('Schema parses valid object', () => {
+        const bankHoliday: BankHoliday = BankHolidaySchema.parse({ title: 'Boxing Day', date: '2022-12-28', notes: 'Substitute day', bunting: true })
         expect(bankHoliday).toBeDefined()
         expect(bankHoliday.title).toEqual('Boxing Day')
         expect(bankHoliday.date.getFullYear()).toEqual(2022)
