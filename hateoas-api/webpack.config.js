@@ -1,5 +1,5 @@
-const path = require('path');
-const SpinSdkPlugin = require("@fermyon/spin-sdk/plugins/webpack")
+const path = require('path')
+const SpinSdkPlugin = require('@fermyon/spin-sdk/plugins/webpack')
 
 module.exports = {
     entry: './src/spin.ts',
@@ -23,7 +23,7 @@ module.exports = {
         filename: 'dist.js',
         module: true,
         library: {
-            type: "module",
+            type: 'module',
         }
     },
     plugins: [
@@ -32,4 +32,4 @@ module.exports = {
     optimization: {
         minimize: false
     },
-};
+}

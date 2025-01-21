@@ -14,5 +14,7 @@ spin add -t static-fileserver
 ## Useful commands
 
 ```
+
+npx knitwit
 spin build --up
 ```

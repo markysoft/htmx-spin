@@ -1,10 +1,10 @@
 import { z } from 'zod'
 import { getOneYearsTime } from './lib/dateUtils'
-import { BankHoliday, BankHolidaySchema } from './schemas/schema'
+import { BankHoliday, BankHolidaySchema } from './schemas/BankHoliday'
 
 export async function getBankHolidays() {
 
-    const holidaysResponse = await fetch("https://www.gov.uk/bank-holidays.json")
+    const holidaysResponse = await fetch('https://www.gov.uk/bank-holidays.json')
     if (!holidaysResponse.ok) {
         throw new Error(`Failed to fetch bank holidays: ${holidaysResponse.statusText}`)
     }

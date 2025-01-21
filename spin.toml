@@ -7,16 +7,17 @@ authors = ["markysoft <markharrop@yahoo.com>"]
 description = "learing htmx"
 
 [[trigger.http]]
-route = "/bank-holidays"
-component = "bank-holidays"
+route = "/api/..."
+component = "hateoas-api"
 
-[component.bank-holidays]
-source = "bank-holidays/target/bank-holidays.wasm"
-allowed_outbound_hosts = ["https://www.gov.uk"]
+[component.hateoas-api]
+source = "hateoas-api/target/hateoas-api.wasm"
+allowed_outbound_hosts = ["https://www.gov.uk", "https://www.tidetimes.org.uk"]
+files = [{ source = "hateoas-api/src/templates", destination = "hateoas-api/src/templates" }]
 
-[component.bank-holidays.build]
+[component.hateoas-api.build]
 command = "npm run build"
-workdir = "bank-holidays"
+workdir = "hateoas-api"
 
 [[trigger.http]]
 route = "/..."
