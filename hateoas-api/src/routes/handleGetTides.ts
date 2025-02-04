@@ -12,6 +12,7 @@ export async function handleGetTides(req: Request, res: ResponseBuilder) {
         res.send(JSON.stringify(tideRecord))
     } else {
         res.set({ 'content-type': 'text/plain' })
+        res.set({ 'Last-Modified': 'text/plain' })
         res.send(Sqrl.render(tideTemplate, { tideRecord }))
     }
 }

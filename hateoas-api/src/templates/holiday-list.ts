@@ -1,6 +1,4 @@
 export const holidayTemplate = `
-<div class="content">
-    <h2 class="title has-text-primary-15">Bank Holidays</h2>
 
     {{@each(it.holidays) => holiday, index}}
         <div class="card">
@@ -14,5 +12,4 @@ export const holidayTemplate = `
             </div>
         </div>
     {{/each}}
-</div>
 `

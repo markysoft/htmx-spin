@@ -26,10 +26,24 @@
             </p>
             <div class="columns">
                 <div class="column is-half">
-                    <div hx-get="/api/tides" hx-trigger="load"></div>
+                    <div class="content">
+                        <h2 class="title has-text-primary-15">Tides</h2>
+                        <div hx-get="/api/tides" hx-trigger="load" hx-indicator="#tide-spinner">
+                            <div id="tide-spinner" class="spinner htmx-indicator box">
+                                <progress class="progress is-large is-info" max="100">Requesting tides</progress>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="column is-half">
-                    <div hx-get="/api/bank-holidays" hx-trigger="load"></div>
+                    <div class="content">
+                        <h2 class="title has-text-primary-15">Bank Holidays</h2>
+                        <div hx-get="/api/bank-holidays" hx-trigger="load"  hx-indicator="#bh-spinner">#
+                        <div id="bh-spinner" class="spinner htmx-indicator box">
+                            <progress class="progress is-large is-info" max="100">Requesting bank holidays</progress>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
