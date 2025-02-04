@@ -27,13 +27,13 @@ function mapWeather(todayWeather: AccuWeather): WeekAheadDay {
     },
     Sun: { EpochRise: sunrise, EpochSet: sunset },
     Moon: { EpochRise: moonrise, EpochSet: moonset },
-    // Moon: { Phase: moon_phase },
+    Moon: { Phase: moon_phase },
     Moon: { Age: age },
   } = todayWeather
 
   return {
     weather: WeatherSchema.parse({
-      date,
+      date: new Date(date * 1000),
       main,
       description,
       chanceOfRain: chanceOfRain / 100,
@@ -41,7 +41,7 @@ function mapWeather(todayWeather: AccuWeather): WeekAheadDay {
       wind: { speed, maxSpeed, degrees },
     }),
     sun: SunSchema.parse({ rise: sunrise * 1000, set: sunset * 1000 }),
-    moon: MoonSchema.parse({ rise: moonrise * 1000, set: moonset * 1000, phase: age / 28 }),
+    moon: MoonSchema.parse({ rise: moonrise * 1000, set: moonset * 1000, phaseDesc: moon_phase, phase: age / 28 }),
   }
 }
 

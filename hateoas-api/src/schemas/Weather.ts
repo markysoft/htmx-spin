@@ -1,12 +1,14 @@
 import { z } from 'zod'
 import { SunSchema } from './SunSchema'
 import { MoonSchema } from './Moon'
+import { degreesToCompass } from '../lib/compassUtils'
+import { splitOnSemiColons } from '../lib/zodUtils'
 
 export const WeatherSchema = z.object({
-  date: z.coerce.date().optional(),
+  date: z.date().optional(),
   main: z.string().optional(),
-  description: z.string().optional(),
-  chanceOfRain: z.number().optional(),
+  description: z.string().transform(splitOnSemiColons).optional(),
+  chanceOfRain: z.number().transform((val) => `${val * 100}%`).optional(),
   temp: z.object({
     max: z.number().optional(),
     min: z.number().optional(),
@@ -16,7 +18,7 @@ export const WeatherSchema = z.object({
   wind: z.object({
     speed: z.number().optional(),
     maxSpeed: z.number().optional(),
-    degrees: z.number().optional(),
+    degrees: z.number().transform(degreesToCompass).optional(),
   }),
 })
 
@@ -26,7 +28,6 @@ export const WeekAheadDaySchema = z.object({
   weather: WeatherSchema,
   sun: SunSchema,
   moon: MoonSchema,
-  tides: z.array(z.date()).optional(),
 })
 
 export type WeekAheadDay = z.infer<typeof WeekAheadDaySchema>

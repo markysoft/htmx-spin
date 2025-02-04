@@ -13,7 +13,16 @@ export function getOneYearsTime(d: Date): Date {
     return new Date(year + 1, month, day)
 }
 
-export function toFriendlyDate(d: Date): string {
-    return `${dayNames[d.getDay()]} ${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`
+export function toFriendlyDate(date: Date): string {
+    const dayOfWeek = dayNames[date.getDay()]
+    const dayOfMonth = date.getDate()
+    const month = monthNames[date.getMonth()]
+    const year = date.getFullYear()
+    return `${dayOfWeek} ${dayOfMonth} ${month} ${year}`
+}
 
+export function toHourMinuteString(date: Date): string {
+    const hours = date.getHours().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')
+    return `${hours}:${minutes}`
 }

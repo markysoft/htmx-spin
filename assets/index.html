@@ -33,6 +33,12 @@
                                 <progress class="progress is-large is-info" max="100">Requesting tides</progress>
                             </div>
                         </div>
+                        <h2 class="title has-text-primary-15">Weather</h2>
+                        <div hx-get="/api/weather" hx-trigger="load" hx-indicator="#weather-spinner">
+                            <div id="weather-spinner" class="spinner htmx-indicator box">
+                                <progress class="progress is-large is-info" max="100">Requesting weather</progress>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="column is-half">
