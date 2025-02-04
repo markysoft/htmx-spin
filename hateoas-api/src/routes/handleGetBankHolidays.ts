@@ -1,7 +1,7 @@
 import { ResponseBuilder } from '@fermyon/spin-sdk'
 import * as Sqrl from 'squirrelly'
 import { isJsonRequest } from '../lib/isJsonRequest'
-import { getBankHolidays } from '../getBankHolidays'
+import { getBankHolidays } from '../lib/getBankHolidays'
 import { holidayTemplate } from '../templates/holiday-list'
 import { twentyFourHoursInSeconds } from '../config'
 

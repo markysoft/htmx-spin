@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { getOneYearsTime } from './lib/dateUtils'
-import { BankHoliday, BankHolidaySchema } from './schemas/BankHoliday'
+import { getOneYearsTime } from './dateUtils'
+import { BankHoliday, BankHolidaySchema } from '../schemas/BankHoliday'
 
 export async function getBankHolidays() {
 
