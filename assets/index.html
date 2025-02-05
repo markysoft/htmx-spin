@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTMX Spin</title>
+    <title>HTMX Almanac</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="./site.css">
     <script src="https://unpkg.com/htmx.org@2.0.4"
@@ -16,7 +16,7 @@
     <section class="section">
         <div class="container">
             <h1 class="title">
-                HTMX Spin
+                HTMX Almanac
             </h1>
             <p class="subtitle">
                 Typescript backend running on
@@ -44,10 +44,11 @@
                 <div class="column is-half">
                     <div class="content">
                         <h2 class="title has-text-primary-15">Bank Holidays</h2>
-                        <div hx-get="/api/bank-holidays" hx-trigger="load"  hx-indicator="#bh-spinner">#
-                        <div id="bh-spinner" class="spinner htmx-indicator box">
-                            <progress class="progress is-large is-info" max="100">Requesting bank holidays</progress>
-                        </div>
+                        <div hx-get="/api/bank-holidays" hx-trigger="load" hx-indicator="#bh-spinner">#
+                            <div id="bh-spinner" class="spinner htmx-indicator box">
+                                <progress class="progress is-large is-info" max="100">Requesting bank
+                                    holidays</progress>
+                            </div>
                         </div>
                     </div>
                 </div>
