@@ -12,9 +12,9 @@ export const weatherTemplate = `
                 <p><strong>Temp:</strong> {{it.weatherRecord.weather.temp.min}} to
                  {{it.weatherRecord.weather.temp.max}}°C</p>
 
-                <p><strong>Wind: </strong>{{it.weatherRecord.weather.wind.speed}}mph 
+                <p><strong>Wind: </strong>{{it.weatherRecord.weather.wind.speed}} MPH 
                  {{it.weatherRecord.weather.wind.degrees}}<br/>
-                 Gusts up to {{it.weatherRecord.weather.wind.maxSpeed}}mph</p>
+                 Gusts up to {{it.weatherRecord.weather.wind.maxSpeed}} MPH</p>
 
                  <p><strong>Sunrise:</strong> {{it.weatherRecord.sun.rise}}, 
                  <strong>Sunset:</strong> {{it.weatherRecord.sun.set}}</p>
